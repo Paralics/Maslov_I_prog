@@ -6,6 +6,10 @@ T = tp.TypeVar("T")
 
 
 def matrix_transposition(matrix: list[list[str]]) -> list[list[str]]:
+    """
+    >>> matrix_transposition([['1', '2', '3'], ['1', '2', '3'], ['1', '2', '3']])
+    [['1', '1', '1'], ['2', '2', '2'], ['3', '3', '3']]
+    """
     return [[matrix[row_n][column_n] for row_n in range(len(matrix))] for column_n in range(len(matrix[0]))]
 
 
@@ -164,7 +168,12 @@ def check_solution(solution: tp.List[tp.List[str]]) -> bool:
 
 
 def shuffle_grid(grid: list[list[str]]) -> list[list[str]]:
-    """Перемешивает столбцы и строки пазла, сохраняя их внутри одного блока строк и столбцов"""
+    """Перемешивает столбцы и строки пазла, сохраняя их внутри одного блока строк и столбцов
+    >>> trivial_solution = [["1", "2", "3", "4", "5", "6", "7", "8", "9"], ["4", "5", "6", "7", "8", "9", "1", "2", "3"], ["7", "8", "9", "1", "2", "3", "4", "5", "6"], ["2", "3", "4", "5", "6", "7", "8", "9", "1"], ["5", "6", "7", "8", "9", "1", "2", "3", "4"], ["8", "9", "1", "2", "3", "4", "5", "6", "7"], ["3", "4", "5", "6", "7", "8", "9", "1", "2"], ["6", "7", "8", "9", "1", "2", "3", "4", "5"], ["9", "1", "2", "3", "4", "5", "6", "7", "8"]]
+    >>> sum([int(i) for i in shuffle_grid(trivial_solution)[0]])
+    45
+
+    """
     for _ in range(2):
         for block_row in range(0, 9, 3):
             if random.randint(0, 1):
